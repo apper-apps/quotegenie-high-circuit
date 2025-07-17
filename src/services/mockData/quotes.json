@@ -1,0 +1,200 @@
+[
+  {
+    "Id": 1,
+    "customer_name": "John Smith",
+    "customer_email": "john@email.com",
+    "customer_phone": "555-123-4567",
+    "service_address": "123 Main St, Scarsdale, NY 10583",
+    "services_requested": ["roofline", "wreaths", "garland"],
+    "timeline": "before December 15th",
+    "color_preference": "warm white",
+    "call_summary": "wants full lighting package for colonial house",
+    "status": "sent",
+    "total_value": 2850,
+    "created_at": "2024-01-15T10:30:00Z",
+    "sent_at": "2024-01-15T14:20:00Z",
+    "property_analysis": {
+      "roofline_linear_feet": 180,
+      "roof_peaks_count": 3,
+      "house_style": "colonial",
+      "driveway_length_feet": 75,
+      "complexity_level": "moderate",
+      "property_size": "large"
+    },
+    "packages": [
+      {
+        "tier": "essential",
+        "total": 1850,
+        "services": ["Basic roofline lighting", "Installation"]
+      },
+      {
+        "tier": "complete",
+        "total": 2850,
+        "services": ["Premium roofline lighting", "3 wreaths", "25ft garland", "Enhanced installation"]
+      },
+      {
+        "tier": "premium",
+        "total": 3950,
+        "services": ["Multicolor roofline", "5 wreaths", "45ft garland", "Stake lights", "Premium installation"]
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "customer_name": "Sarah Johnson",
+    "customer_email": "sarah.johnson@email.com",
+    "customer_phone": "555-987-6543",
+    "service_address": "456 Oak Avenue, White Plains, NY 10601",
+    "services_requested": ["roofline", "wreaths"],
+    "timeline": "early December",
+    "color_preference": "multicolor",
+    "call_summary": "ranch style home, wants colorful display",
+    "status": "generated",
+    "total_value": 2200,
+    "created_at": "2024-01-16T09:15:00Z",
+    "property_analysis": {
+      "roofline_linear_feet": 120,
+      "roof_peaks_count": 2,
+      "house_style": "ranch",
+      "driveway_length_feet": 50,
+      "complexity_level": "simple",
+      "property_size": "medium"
+    },
+    "packages": [
+      {
+        "tier": "essential",
+        "total": 1500,
+        "services": ["Basic roofline lighting", "Installation"]
+      },
+      {
+        "tier": "complete",
+        "total": 2200,
+        "services": ["Premium roofline lighting", "2 wreaths", "Enhanced installation"]
+      },
+      {
+        "tier": "premium",
+        "total": 3100,
+        "services": ["Multicolor roofline", "4 wreaths", "35ft garland", "Premium installation"]
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "customer_name": "Michael Brown",
+    "customer_email": "m.brown@email.com",
+    "customer_phone": "555-456-7890",
+    "service_address": "789 Pine Street, Yonkers, NY 10703",
+    "services_requested": ["roofline", "garland", "stake_lights"],
+    "timeline": "Thanksgiving week",
+    "color_preference": "warm white",
+    "call_summary": "contemporary home, wants elegant lighting",
+    "status": "viewed",
+    "total_value": 3200,
+    "created_at": "2024-01-17T11:45:00Z",
+    "sent_at": "2024-01-17T16:30:00Z",
+    "property_analysis": {
+      "roofline_linear_feet": 200,
+      "roof_peaks_count": 1,
+      "house_style": "contemporary",
+      "driveway_length_feet": 100,
+      "complexity_level": "complex",
+      "property_size": "large"
+    },
+    "packages": [
+      {
+        "tier": "essential",
+        "total": 2100,
+        "services": ["Basic roofline lighting", "Installation"]
+      },
+      {
+        "tier": "complete",
+        "total": 3200,
+        "services": ["Premium roofline lighting", "35ft garland", "8 stake lights", "Enhanced installation"]
+      },
+      {
+        "tier": "premium",
+        "total": 4500,
+        "services": ["Multicolor roofline", "2 wreaths", "50ft garland", "12 stake lights", "Premium installation"]
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "customer_name": "Emily Davis",
+    "customer_email": "emily.davis@email.com",
+    "customer_phone": "555-321-0987",
+    "service_address": "321 Elm Drive, New Rochelle, NY 10804",
+    "services_requested": ["wreaths", "garland"],
+    "timeline": "mid December",
+    "color_preference": "traditional",
+    "call_summary": "cape cod style, wants traditional decorations",
+    "status": "approved",
+    "total_value": 1650,
+    "created_at": "2024-01-18T14:20:00Z",
+    "sent_at": "2024-01-18T17:45:00Z",
+    "property_analysis": {
+      "roofline_linear_feet": 140,
+      "roof_peaks_count": 2,
+      "house_style": "cape_cod",
+      "driveway_length_feet": 60,
+      "complexity_level": "simple",
+      "property_size": "medium"
+    },
+    "packages": [
+      {
+        "tier": "essential",
+        "total": 950,
+        "services": ["2 wreaths", "Basic installation"]
+      },
+      {
+        "tier": "complete",
+        "total": 1650,
+        "services": ["3 wreaths", "30ft garland", "Enhanced installation"]
+      },
+      {
+        "tier": "premium",
+        "total": 2400,
+        "services": ["5 wreaths", "45ft garland", "Premium installation"]
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "customer_name": "Robert Wilson",
+    "customer_email": "rob.wilson@email.com",
+    "customer_phone": "555-654-3210",
+    "service_address": "654 Maple Lane, Mount Vernon, NY 10550",
+    "services_requested": ["roofline"],
+    "timeline": "early December",
+    "color_preference": "cool white",
+    "call_summary": "modern home, wants minimalist lighting",
+    "status": "draft",
+    "total_value": 1200,
+    "created_at": "2024-01-19T08:30:00Z",
+    "property_analysis": {
+      "roofline_linear_feet": 90,
+      "roof_peaks_count": 1,
+      "house_style": "modern",
+      "driveway_length_feet": 40,
+      "complexity_level": "simple",
+      "property_size": "small"
+    },
+    "packages": [
+      {
+        "tier": "essential",
+        "total": 1200,
+        "services": ["Basic roofline lighting", "Installation"]
+      },
+      {
+        "tier": "complete",
+        "total": 1800,
+        "services": ["Premium roofline lighting", "1 wreath", "Enhanced installation"]
+      },
+      {
+        "tier": "premium",
+        "total": 2500,
+        "services": ["Premium roofline lighting", "2 wreaths", "20ft garland", "Premium installation"]
+      }
+    ]
+  }
+]

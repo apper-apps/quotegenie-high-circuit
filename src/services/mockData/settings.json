@@ -1,0 +1,30 @@
+{
+  "pricing": {
+    "roofline_standard": 12.50,
+    "roofline_premium": 17.50,
+    "wreaths_standard": 85.00,
+    "wreaths_premium": 125.00,
+    "garland": 8.75,
+    "stake_lights": 25.00,
+    "installation_base": 275.00,
+    "installation_enhanced": 358.00,
+    "installation_premium": 440.00,
+    "markup": 0.15,
+    "tax_rate": 0.08
+  },
+  "email_templates": {
+    "quote_subject": "Your Holiday Lighting Quote from Yule Love Lights",
+    "quote_greeting": "Thank you for your interest in our holiday lighting services!",
+    "quote_footer": "We look forward to making your holidays bright!"
+  },
+  "api_keys": {
+    "google_maps": "your_google_maps_api_key",
+    "openai": "your_openai_api_key"
+  },
+  "business_info": {
+    "company_name": "Yule Love Lights",
+    "phone": "555-YULE-LOVE",
+    "email": "info@yulelovelights.com",
+    "address": "123 Business St, Westchester, NY 10601"
+  }
+}

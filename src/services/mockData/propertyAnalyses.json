@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "address": "123 Main St, Scarsdale, NY 10583",
+    "coordinates": {
+      "lat": 40.9565,
+      "lng": -73.7849
+    },
+    "satellite_image_url": "https://example.com/satellite/123main.jpg",
+    "roofline_linear_feet": 180,
+    "roof_peaks_count": 3,
+    "house_style": "colonial",
+    "driveway_length_feet": 75,
+    "front_entrance_area": true,
+    "architectural_features": ["dormers", "bay_windows", "front_porch"],
+    "complexity_level": "moderate",
+    "property_size": "large",
+    "accessibility_notes": "Steep roof angle may require additional safety equipment",
+    "recommended_services": ["roofline", "wreaths", "garland", "stake_lighting"],
+    "analysis_timestamp": "2024-01-15T10:00:00Z"
+  },
+  {
+    "Id": 2,
+    "address": "456 Oak Avenue, White Plains, NY 10601",
+    "coordinates": {
+      "lat": 41.0348,
+      "lng": -73.7629
+    },
+    "satellite_image_url": "https://example.com/satellite/456oak.jpg",
+    "roofline_linear_feet": 120,
+    "roof_peaks_count": 2,
+    "house_style": "ranch",
+    "driveway_length_feet": 50,
+    "front_entrance_area": true,
+    "architectural_features": ["attached_garage", "covered_entry"],
+    "complexity_level": "simple",
+    "property_size": "medium",
+    "accessibility_notes": "Easy access, single story installation",
+    "recommended_services": ["roofline", "wreaths", "garland"],
+    "analysis_timestamp": "2024-01-16T09:00:00Z"
+  },
+  {
+    "Id": 3,
+    "address": "789 Pine Street, Yonkers, NY 10703",
+    "coordinates": {
+      "lat": 40.9312,
+      "lng": -73.8988
+    },
+    "satellite_image_url": "https://example.com/satellite/789pine.jpg",
+    "roofline_linear_feet": 200,
+    "roof_peaks_count": 1,
+    "house_style": "contemporary",
+    "driveway_length_feet": 100,
+    "front_entrance_area": true,
+    "architectural_features": ["flat_sections", "modern_angles", "large_windows"],
+    "complexity_level": "complex",
+    "property_size": "large",
+    "accessibility_notes": "Complex roofline with multiple angles and materials",
+    "recommended_services": ["roofline", "garland", "stake_lighting"],
+    "analysis_timestamp": "2024-01-17T11:30:00Z"
+  }
+]
