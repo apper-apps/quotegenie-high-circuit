@@ -19,9 +19,10 @@ const QuoteEditor = () => {
   const [quote, setQuote] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [saving, setSaving] = useState(false);
+const [saving, setSaving] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState("complete");
-
+  const [visualMockup, setVisualMockup] = useState(null);
+  const [generatingMockup, setGeneratingMockup] = useState(false);
   useEffect(() => {
     if (id && id !== "new") {
       loadQuote();
@@ -75,9 +76,43 @@ const QuoteEditor = () => {
       toast.error("Failed to save quote");
     } finally {
       setSaving(false);
-    }
+}
   };
 
+  const generateVisualMockup = async () => {
+    setGeneratingMockup(true);
+    try {
+      // Simulate mockup generation with property analysis
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const mockupData = {
+        rooflineLength: quote?.property_analysis?.roofline_linear_feet || 180,
+        roofPeaks: quote?.property_analysis?.roof_peaks_count || 3,
+        houseStyle: quote?.property_analysis?.house_style || "colonial",
+        selectedPackage,
+        lightingPlan: {
+          rooflineStyle: selectedPackage === "premium" ? "multicolor" : "warm_white",
+          wreathCount: selectedPackage === "essential" ? 0 : selectedPackage === "complete" ? 3 : 5,
+          garlandLength: selectedPackage === "essential" ? 0 : selectedPackage === "complete" ? 25 : 45,
+          stakelights: selectedPackage === "premium" ? 8 : 0
+        },
+        estimatedInstallTime: selectedPackage === "essential" ? "4-6 hours" : selectedPackage === "complete" ? "6-8 hours" : "8-10 hours",
+        powerRequirements: "Standard 110V outlets (3 required)"
+      };
+      
+      setVisualMockup(mockupData);
+      setQuote(prev => ({
+        ...prev,
+        visual_mockup: mockupData
+      }));
+      
+      toast.success("Visual mockup generated successfully");
+    } catch (error) {
+      toast.error("Failed to generate visual mockup");
+    } finally {
+      setGeneratingMockup(false);
+    }
+  };
   const handleSendQuote = async () => {
     setSaving(true);
     try {
@@ -233,6 +268,143 @@ const QuoteEditor = () => {
           selectedPackage={selectedPackage}
           onSelectPackage={setSelectedPackage}
         />
+</Card>
+
+      {/* Visual Mockup */}
+      <Card className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900">Visual Mockup</h3>
+          <Button 
+            variant="outline"
+            onClick={generateVisualMockup}
+            disabled={generatingMockup || !selectedPackage}
+          >
+            {generatingMockup ? (
+              <>
+                <ApperIcon name="Loader2" className="h-4 w-4 mr-2 animate-spin" />
+                Generating...
+              </>
+            ) : (
+              <>
+                <ApperIcon name="Image" className="h-4 w-4 mr-2" />
+                Generate Mockup
+              </>
+            )}
+          </Button>
+        </div>
+
+        {visualMockup ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-6"
+          >
+            {/* Mockup Preview */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-6 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-100/50"></div>
+              <div className="relative z-10">
+                <div className="text-center mb-6">
+                  <ApperIcon name="Home" className="h-16 w-16 mx-auto mb-4 text-primary-600" />
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                    {visualMockup.houseStyle} Style Home
+                  </h4>
+                  <p className="text-gray-600">
+                    {visualMockup.rooflineLength} ft roofline • {visualMockup.roofPeaks} peaks
+                  </p>
+                </div>
+
+                {/* Lighting Configuration */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-white/80 rounded-lg p-4 text-center">
+                    <ApperIcon name="Zap" className="h-8 w-8 mx-auto mb-2 text-amber-600" />
+                    <p className="text-sm font-medium text-gray-900">Roofline Lights</p>
+                    <p className="text-xs text-gray-600 capitalize">
+                      {visualMockup.lightingPlan.rooflineStyle.replace('_', ' ')}
+                    </p>
+                  </div>
+                  
+                  {visualMockup.lightingPlan.wreathCount > 0 && (
+                    <div className="bg-white/80 rounded-lg p-4 text-center">
+                      <ApperIcon name="Circle" className="h-8 w-8 mx-auto mb-2 text-green-600" />
+                      <p className="text-sm font-medium text-gray-900">Wreaths</p>
+                      <p className="text-xs text-gray-600">
+                        {visualMockup.lightingPlan.wreathCount} premium
+                      </p>
+                    </div>
+                  )}
+                  
+                  {visualMockup.lightingPlan.garlandLength > 0 && (
+                    <div className="bg-white/80 rounded-lg p-4 text-center">
+                      <ApperIcon name="Minus" className="h-8 w-8 mx-auto mb-2 text-red-600" />
+                      <p className="text-sm font-medium text-gray-900">Garland</p>
+                      <p className="text-xs text-gray-600">
+                        {visualMockup.lightingPlan.garlandLength} ft
+                      </p>
+                    </div>
+                  )}
+                  
+                  {visualMockup.lightingPlan.stakelights > 0 && (
+                    <div className="bg-white/80 rounded-lg p-4 text-center">
+                      <ApperIcon name="Navigation" className="h-8 w-8 mx-auto mb-2 text-purple-600" />
+                      <p className="text-sm font-medium text-gray-900">Stake Lights</p>
+                      <p className="text-xs text-gray-600">
+                        {visualMockup.lightingPlan.stakelights} units
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Installation Details */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gray-50 rounded-lg p-4">
+                <div className="flex items-center mb-3">
+                  <ApperIcon name="Clock" className="h-5 w-5 mr-2 text-primary-600" />
+                  <h5 className="font-medium text-gray-900">Installation Time</h5>
+                </div>
+                <p className="text-sm text-gray-700">{visualMockup.estimatedInstallTime}</p>
+              </div>
+              
+              <div className="bg-gray-50 rounded-lg p-4">
+                <div className="flex items-center mb-3">
+                  <ApperIcon name="Zap" className="h-5 w-5 mr-2 text-primary-600" />
+                  <h5 className="font-medium text-gray-900">Power Requirements</h5>
+                </div>
+                <p className="text-sm text-gray-700">{visualMockup.powerRequirements}</p>
+              </div>
+            </div>
+
+            {/* Mockup Actions */}
+            <div className="flex justify-center space-x-3">
+              <Button variant="outline" onClick={generateVisualMockup}>
+                <ApperIcon name="RefreshCw" className="h-4 w-4 mr-2" />
+                Regenerate
+              </Button>
+              <Button variant="outline">
+                <ApperIcon name="Download" className="h-4 w-4 mr-2" />
+                Download
+              </Button>
+              <Button variant="outline">
+                <ApperIcon name="Share" className="h-4 w-4 mr-2" />
+                Share
+              </Button>
+            </div>
+          </motion.div>
+        ) : (
+          <div className="text-center py-12">
+            <ApperIcon name="Image" className="h-16 w-16 mx-auto mb-4 text-gray-400" />
+            <h4 className="text-lg font-medium text-gray-900 mb-2">No Visual Mockup Generated</h4>
+            <p className="text-gray-600 mb-4">
+              Generate a visual mockup to show customers how their holiday lighting will look
+            </p>
+            <Button onClick={generateVisualMockup} disabled={!selectedPackage}>
+              <ApperIcon name="Image" className="h-4 w-4 mr-2" />
+              Generate Visual Mockup
+            </Button>
+          </div>
+        )}
       </Card>
 
       {/* Property Analysis */}
